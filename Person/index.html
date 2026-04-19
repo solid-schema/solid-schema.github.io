@@ -59,13 +59,11 @@
       "format": "uri"
     },
     "knows": {
-      "description": "Other People this Person knows. Each entry is a Person reference (typically just an @id).",
+      "description": "Other People this Person knows. Each entry is a WebID URI.",
       "type": "array",
       "items": {
-        "anyOf": [
-          { "type": "string", "format": "uri" },
-          { "$ref": "https://solid-schema.github.io/Person/index.json" }
-        ]
+        "type": "string",
+        "format": "uri"
       }
     }
   },
@@ -146,13 +144,11 @@ pre { background: #f0efeb; padding: 1rem; overflow-x: auto; border-radius: 4px; 
       "format": "uri"
     },
     "knows": {
-      "description": "Other People this Person knows. Each entry is a Person reference (typically just an @id).",
+      "description": "Other People this Person knows. Each entry is a WebID URI.",
       "type": "array",
       "items": {
-        "anyOf": [
-          { "type": "string", "format": "uri" },
-          { "$ref": "https://solid-schema.github.io/Person/index.json" }
-        ]
+        "type": "string",
+        "format": "uri"
       }
     }
   },
