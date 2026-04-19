@@ -6,6 +6,13 @@
     "status": "stable",
     "schema": "/Article/index.json"
   },
+  "Bookmark": {
+    "title": "Bookmark",
+    "description": "A saved reference to a web resource — title, URL, optional tags and notes.",
+    "term": "urn:solid:Bookmark",
+    "status": "stable",
+    "schema": "/Bookmark/index.json"
+  },
   "Document": {
     "title": "Document",
     "description": "A generic document — a self-contained piece of content with a title, body, and metadata. Spans foaf:Document, schema:CreativeWork, and as:Document.",

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bookmark — solid-schema</title>
+<meta name="description" content="A saved reference to a web resource — title, URL, optional tags and notes.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="/Bookmark/">
+<link rel="alternate" type="application/schema+json" href="/Bookmark/index.json">
+<script type="application/schema+json">
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Bookmark/index.json",
+  "title": "Bookmark",
+  "description": "A saved reference to a web resource — title, URL, optional tags and notes.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Bookmark",
+    "termRegistry": "https://urn-solid.github.io/Bookmark/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "type": "string",
+      "enum": ["Bookmark", "urn:solid:Bookmark"]
+    },
+    "title": {
+      "description": "The bookmark headline.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "recalls": {
+      "description": "The URL the bookmark points at.",
+      "type": "string",
+      "format": "uri"
+    },
+    "description": {
+      "description": "Free-text notes about the bookmark.",
+      "type": "string",
+      "maxLength": 2000
+    },
+    "hasTopic": {
+      "description": "Tags or topics for free-form classification.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "created": {
+      "description": "ISO-8601 datetime the bookmark was saved.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "attributedTo": {
+      "description": "Who saved the bookmark.",
+      "anyOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "https://solid-schema.github.io/Person/index.json" }
+      ]
+    }
+  },
+  "required": ["@type", "title", "recalls"],
+  "additionalProperties": true
+}
+
+</script>
+<style>
+body { font-family: Georgia, serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; color: #2c2c2c; background: #fafaf8; }
+header a { color: #888; text-decoration: none; margin-right: 1.2rem; }
+h1 { margin-bottom: 0.25rem; }
+.subtitle { color: #888; margin-top: 0; }
+.urn { font-family: monospace; background: #f0efeb; padding: 0.1em 0.4em; border-radius: 3px; }
+pre { background: #f0efeb; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+</style>
+</head>
+<body>
+<header>
+  <a href="/">solid-schema</a>
+  <a href="/index.json">index</a>
+  <a href="/reverse-index.json">reverse</a>
+  <a href="/corpus.jsonl">corpus</a>
+</header>
+<main>
+  <h1>Bookmark</h1>
+  <p class="subtitle">A saved reference to a web resource — title, URL, optional tags and notes.</p>
+  <p>Term: <a class="urn" href="https://urn-solid.github.io/Bookmark/">urn:solid:Bookmark</a></p>
+  <h2>Schema</h2>
+  <pre><code>{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Bookmark/index.json",
+  "title": "Bookmark",
+  "description": "A saved reference to a web resource — title, URL, optional tags and notes.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Bookmark",
+    "termRegistry": "https://urn-solid.github.io/Bookmark/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "type": "string",
+      "enum": ["Bookmark", "urn:solid:Bookmark"]
+    },
+    "title": {
+      "description": "The bookmark headline.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "recalls": {
+      "description": "The URL the bookmark points at.",
+      "type": "string",
+      "format": "uri"
+    },
+    "description": {
+      "description": "Free-text notes about the bookmark.",
+      "type": "string",
+      "maxLength": 2000
+    },
+    "hasTopic": {
+      "description": "Tags or topics for free-form classification.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "created": {
+      "description": "ISO-8601 datetime the bookmark was saved.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "attributedTo": {
+      "description": "Who saved the bookmark.",
+      "anyOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "https://solid-schema.github.io/Person/index.json" }
+      ]
+    }
+  },
+  "required": ["@type", "title", "recalls"],
+  "additionalProperties": true
+}
+</code></pre>
+</main>
+</body>
+</html>
