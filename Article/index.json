@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Article/index.json",
+  "title": "Article",
+  "description": "A long-form authored piece — a blog post, news article, or essay. More structured than Note.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Article",
+    "termRegistry": "https://urn-solid.github.io/Article/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "type": "string",
+      "enum": ["Article", "urn:solid:Article"]
+    },
+    "name": {
+      "description": "The Article's title — required for an Article (unlike a Note).",
+      "type": "string",
+      "minLength": 1
+    },
+    "content": {
+      "description": "The Article body. Often HTML in fediverse usage.",
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "description": "Short summary or lede.",
+      "type": "string"
+    },
+    "mediaType": {
+      "description": "MIME type of the content (defaults to text/html in fediverse usage).",
+      "type": "string"
+    },
+    "attributedTo": {
+      "anyOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "https://solid-schema.github.io/Person/index.json" }
+      ]
+    },
+    "published": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "tag": {
+      "description": "Tags, hashtags, or mentions attached to the Article.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "@type": { "type": "string" },
+          "name": { "type": "string" },
+          "href": { "type": "string", "format": "uri" }
+        }
+      }
+    }
+  },
+  "required": ["@type", "name", "content"],
+  "additionalProperties": true
+}

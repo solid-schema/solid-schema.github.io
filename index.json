@@ -1,4 +1,25 @@
 {
+  "Article": {
+    "title": "Article",
+    "description": "A long-form authored piece — a blog post, news article, or essay. More structured than Note.",
+    "term": "urn:solid:Article",
+    "status": "stable",
+    "schema": "/Article/index.json"
+  },
+  "Document": {
+    "title": "Document",
+    "description": "A generic document — a self-contained piece of content with a title, body, and metadata. Spans foaf:Document, schema:CreativeWork, and as:Document.",
+    "term": "urn:solid:Document",
+    "status": "stable",
+    "schema": "/Document/index.json"
+  },
+  "Event": {
+    "title": "Event",
+    "description": "A scheduled occurrence with a start (and usually end) time. Aligns with as:Event, schema:Event, and ical:Vevent at the term level.",
+    "term": "urn:solid:Event",
+    "status": "stable",
+    "schema": "/Event/index.json"
+  },
   "Note": {
     "title": "Note",
     "description": "A short text post — the fediverse-canonical Note.",
@@ -12,5 +33,19 @@
     "term": "urn:solid:Person",
     "status": "stable",
     "schema": "/Person/index.json"
+  },
+  "VerifiableCredential": {
+    "title": "VerifiableCredential",
+    "description": "A W3C Verifiable Credential — a tamper-evident, cryptographically-signed claim made by an issuer about a subject.",
+    "term": "urn:solid:VerifiableCredential",
+    "status": "stable",
+    "schema": "/VerifiableCredential/index.json"
+  },
+  "Vtodo": {
+    "title": "Vtodo",
+    "description": "An iCalendar to-do item — a task with status, priority, and optional due dates. RFC 5545 compatible.",
+    "term": "urn:solid:Vtodo",
+    "status": "stable",
+    "schema": "/Vtodo/index.json"
   }
 }

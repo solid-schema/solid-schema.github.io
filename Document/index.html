@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Document — solid-schema</title>
+<meta name="description" content="A generic document — a self-contained piece of content with a title, body, and metadata. Spans foaf:Document, schema:CreativeWork, and as:Document.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="/Document/">
+<link rel="alternate" type="application/schema+json" href="/Document/index.json">
+<script type="application/schema+json">
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Document/index.json",
+  "title": "Document",
+  "description": "A generic document — a self-contained piece of content with a title, body, and metadata. Spans foaf:Document, schema:CreativeWork, and as:Document.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Document",
+    "termRegistry": "https://urn-solid.github.io/Document/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "type": "string",
+      "enum": ["Document", "urn:solid:Document"]
+    },
+    "name": {
+      "description": "The Document's title.",
+      "type": "string",
+      "minLength": 1
+    },
+    "content": {
+      "description": "The Document's body — plain text or HTML.",
+      "type": "string"
+    },
+    "summary": {
+      "description": "A short summary or excerpt.",
+      "type": "string"
+    },
+    "mediaType": {
+      "description": "MIME type of the content (text/html, text/markdown, application/pdf, …).",
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9!#$&\\-^_+.]+/[a-zA-Z0-9!#$&\\-^_+.]+$"
+    },
+    "attributedTo": {
+      "description": "The Person or Actor who authored the Document.",
+      "anyOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "https://solid-schema.github.io/Person/index.json" }
+      ]
+    },
+    "published": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "url": {
+      "description": "Canonical web URL.",
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "required": ["@type"],
+  "additionalProperties": true
+}
+
+</script>
+<style>
+body { font-family: Georgia, serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; color: #2c2c2c; background: #fafaf8; }
+header a { color: #888; text-decoration: none; margin-right: 1.2rem; }
+h1 { margin-bottom: 0.25rem; }
+.subtitle { color: #888; margin-top: 0; }
+.urn { font-family: monospace; background: #f0efeb; padding: 0.1em 0.4em; border-radius: 3px; }
+pre { background: #f0efeb; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+</style>
+</head>
+<body>
+<header>
+  <a href="/">solid-schema</a>
+  <a href="/index.json">index</a>
+  <a href="/reverse-index.json">reverse</a>
+  <a href="/corpus.jsonl">corpus</a>
+</header>
+<main>
+  <h1>Document</h1>
+  <p class="subtitle">A generic document — a self-contained piece of content with a title, body, and metadata. Spans foaf:Document, schema:CreativeWork, and as:Document.</p>
+  <p>Term: <a class="urn" href="https://urn-solid.github.io/Document/">urn:solid:Document</a></p>
+  <h2>Schema</h2>
+  <pre><code>{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Document/index.json",
+  "title": "Document",
+  "description": "A generic document — a self-contained piece of content with a title, body, and metadata. Spans foaf:Document, schema:CreativeWork, and as:Document.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Document",
+    "termRegistry": "https://urn-solid.github.io/Document/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "type": "string",
+      "enum": ["Document", "urn:solid:Document"]
+    },
+    "name": {
+      "description": "The Document's title.",
+      "type": "string",
+      "minLength": 1
+    },
+    "content": {
+      "description": "The Document's body — plain text or HTML.",
+      "type": "string"
+    },
+    "summary": {
+      "description": "A short summary or excerpt.",
+      "type": "string"
+    },
+    "mediaType": {
+      "description": "MIME type of the content (text/html, text/markdown, application/pdf, …).",
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9!#$&amp;\\-^_+.]+/[a-zA-Z0-9!#$&amp;\\-^_+.]+$"
+    },
+    "attributedTo": {
+      "description": "The Person or Actor who authored the Document.",
+      "anyOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "https://solid-schema.github.io/Person/index.json" }
+      ]
+    },
+    "published": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "url": {
+      "description": "Canonical web URL.",
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "required": ["@type"],
+  "additionalProperties": true
+}
+</code></pre>
+</main>
+</body>
+</html>

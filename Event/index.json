@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Event/index.json",
+  "title": "Event",
+  "description": "A scheduled occurrence with a start (and usually end) time. Aligns with as:Event, schema:Event, and ical:Vevent at the term level.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Event",
+    "termRegistry": "https://urn-solid.github.io/Event/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "type": "string",
+      "enum": ["Event", "urn:solid:Event"]
+    },
+    "name": {
+      "description": "The Event's title.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "summary": {
+      "description": "A short summary or description of the Event.",
+      "type": "string"
+    },
+    "startTime": {
+      "description": "When the Event begins (ISO 8601).",
+      "type": "string",
+      "format": "date-time"
+    },
+    "endTime": {
+      "description": "When the Event ends (ISO 8601).",
+      "type": "string",
+      "format": "date-time"
+    },
+    "location": {
+      "description": "Where the Event takes place — a Place reference (URI) or a free-text string.",
+      "anyOf": [
+        { "type": "string" },
+        { "type": "object", "properties": { "@id": { "type": "string", "format": "uri" } }, "required": ["@id"] }
+      ]
+    },
+    "attributedTo": {
+      "description": "The Person or Actor responsible for the Event.",
+      "anyOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "https://solid-schema.github.io/Person/index.json" }
+      ]
+    },
+    "url": {
+      "description": "A canonical web URL for the Event (often distinct from @id for fediverse content).",
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "required": ["@type", "name"],
+  "additionalProperties": true
+}

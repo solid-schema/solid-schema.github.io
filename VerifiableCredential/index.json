@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/VerifiableCredential/index.json",
+  "title": "VerifiableCredential",
+  "description": "A W3C Verifiable Credential — a tamper-evident, cryptographically-signed claim made by an issuer about a subject.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:VerifiableCredential",
+    "termRegistry": "https://urn-solid.github.io/VerifiableCredential/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@context": {
+      "description": "JSON-LD context. VC requires the credentials v1 or v2 context to be present.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "@id": {
+      "description": "The Credential's identifier — often a UUID or HTTPS URL.",
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "description": "Must include VerifiableCredential, optionally plus a more specific subtype.",
+      "oneOf": [
+        { "type": "string", "enum": ["VerifiableCredential", "urn:solid:VerifiableCredential"] },
+        { "type": "array", "minItems": 1, "items": { "type": "string" }, "contains": { "enum": ["VerifiableCredential", "urn:solid:VerifiableCredential"] } }
+      ]
+    },
+    "issuer": {
+      "description": "The party that issued the credential. Either an IRI or an Object with @id and optional metadata.",
+      "anyOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "object", "properties": { "@id": { "type": "string", "format": "uri" } }, "required": ["@id"] }
+      ]
+    },
+    "issuanceDate": {
+      "description": "When the credential was issued (ISO 8601). VC 1.x.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "validFrom": {
+      "description": "When the credential becomes valid (ISO 8601). VC 2.0 alternative to issuanceDate.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "expirationDate": {
+      "description": "When the credential expires (ISO 8601). VC 1.x.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "validUntil": {
+      "description": "When the credential ceases to be valid (ISO 8601). VC 2.0 alternative to expirationDate.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "credentialSubject": {
+      "description": "The entity the credential makes claims about. Object (one subject) or array (many subjects). Each carries @id and arbitrary claim properties.",
+      "oneOf": [
+        { "type": "object" },
+        { "type": "array", "items": { "type": "object" } }
+      ]
+    },
+    "credentialStatus": {
+      "description": "Reference to a status mechanism (revocation list, status list).",
+      "type": "object",
+      "properties": {
+        "@id": { "type": "string", "format": "uri" },
+        "@type": { "type": "string" }
+      },
+      "required": ["@id", "@type"]
+    },
+    "proof": {
+      "description": "Cryptographic proof — issuer signature. Object (one proof) or array (multiple proofs).",
+      "oneOf": [
+        { "type": "object" },
+        { "type": "array", "items": { "type": "object" } }
+      ]
+    }
+  },
+  "required": ["@type", "issuer", "credentialSubject"],
+  "additionalProperties": true
+}

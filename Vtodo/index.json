@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Vtodo/index.json",
+  "title": "Vtodo",
+  "description": "An iCalendar to-do item — a task with status, priority, and optional due dates. RFC 5545 compatible.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Vtodo",
+    "termRegistry": "https://urn-solid.github.io/Vtodo/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "type": "string",
+      "enum": ["Vtodo", "urn:solid:Vtodo"]
+    },
+    "summary": {
+      "description": "The task title — what to do.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "description": {
+      "description": "Longer-form description or notes.",
+      "type": "string"
+    },
+    "dtstart": {
+      "description": "When the task becomes actionable (ISO 8601).",
+      "type": "string",
+      "format": "date-time"
+    },
+    "due": {
+      "description": "Due date-time — the deadline (ISO 8601).",
+      "type": "string",
+      "format": "date-time"
+    },
+    "duration": {
+      "description": "How long the task is expected to take (xsd:duration, e.g. PT30M).",
+      "type": "string",
+      "pattern": "^-?P(?:[0-9]+Y)?(?:[0-9]+M)?(?:[0-9]+D)?(?:T(?:[0-9]+H)?(?:[0-9]+M)?(?:[0-9]+(?:\\.[0-9]+)?S)?)?$"
+    },
+    "status": {
+      "description": "iCalendar Vtodo status enum (RFC 5545).",
+      "type": "string",
+      "enum": ["NEEDS-ACTION", "IN-PROCESS", "COMPLETED", "CANCELLED"]
+    },
+    "priority": {
+      "description": "Priority 0 (undefined) through 9 (lowest); 1 is highest. RFC 5545 §3.8.1.9.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9
+    },
+    "completed": {
+      "description": "When the task was marked complete (ISO 8601).",
+      "type": "string",
+      "format": "date-time"
+    },
+    "categories": {
+      "description": "Tags / categories for the task.",
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": ["@type", "summary"],
+  "additionalProperties": true
+}
