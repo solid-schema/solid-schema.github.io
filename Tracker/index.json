@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Tracker/index.json",
+  "title": "Tracker",
+  "description": "A container for tracking work items — typically a list of iCalendar Vtodos. The list-level counterpart to single-task Vtodo.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Tracker",
+    "termRegistry": "https://urn-solid.github.io/Tracker/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "type": "string"
+    },
+    "@type": {
+      "oneOf": [
+        { "type": "string", "enum": ["Tracker", "urn:solid:Tracker"] },
+        { "type": "array", "items": { "type": "string" }, "contains": { "enum": ["Tracker", "urn:solid:Tracker"] } }
+      ]
+    },
+    "title": {
+      "description": "The Tracker's display name (e.g. \"Today\", \"Backlog\").",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "created": {
+      "description": "When the Tracker was created (ISO 8601).",
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "description": "When the Tracker was most recently updated (ISO 8601).",
+      "type": "string",
+      "format": "date-time"
+    },
+    "initialState": {
+      "description": "iCalendar status assigned to newly-created Vtodos in this Tracker (default: NEEDS-ACTION).",
+      "type": "string",
+      "enum": ["NEEDS-ACTION", "IN-PROCESS", "COMPLETED", "CANCELLED"]
+    },
+    "issue": {
+      "description": "The Vtodos this Tracker contains. Each entry is a Vtodo (inline) or a reference (string/object @id).",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          { "type": "string", "format": "uri" },
+          { "$ref": "https://solid-schema.github.io/Vtodo/index.json" }
+        ]
+      }
+    }
+  },
+  "required": ["@type"],
+  "additionalProperties": true
+}

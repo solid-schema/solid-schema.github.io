@@ -34,6 +34,13 @@
     "status": "stable",
     "schema": "/Person/index.json"
   },
+  "Tracker": {
+    "title": "Tracker",
+    "description": "A container for tracking work items — typically a list of iCalendar Vtodos. The list-level counterpart to single-task Vtodo.",
+    "term": "urn:solid:Tracker",
+    "status": "stable",
+    "schema": "/Tracker/index.json"
+  },
   "VerifiableCredential": {
     "title": "VerifiableCredential",
     "description": "A W3C Verifiable Credential — a tamper-evident, cryptographically-signed claim made by an issuer about a subject.",
