@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/schema/meta.schema.json",
+  "title": "solid-schema meta-schema",
+  "description": "Constraints solid-schema entries must satisfy beyond plain JSON Schema validity. Each Person/index.json (etc.) is a real JSON Schema; this meta-schema enforces our additional registry conventions via the x-urn-solid extension.",
+  "type": "object",
+  "required": ["$schema", "$id", "title", "type", "x-urn-solid"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "$id": {
+      "type": "string",
+      "pattern": "^https://solid-schema\\.github\\.io/[A-Za-z][A-Za-z0-9_-]*/index\\.json$"
+    },
+    "x-urn-solid": {
+      "type": "object",
+      "required": ["term", "status", "added"],
+      "properties": {
+        "term": {
+          "description": "The urn:solid: identifier this schema describes.",
+          "type": "string",
+          "pattern": "^urn:solid:[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "termRegistry": {
+          "description": "URL of the term in the urn-solid registry.",
+          "type": "string",
+          "format": "uri"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["stable", "experimental", "deprecated", "needs-review"]
+        },
+        "added": {
+          "type": "string",
+          "format": "date"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date"
+        },
+        "curatedBy": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

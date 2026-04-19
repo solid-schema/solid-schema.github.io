@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Note — solid-schema</title>
+<meta name="description" content="A short text post — the fediverse-canonical Note.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="/Note/">
+<link rel="alternate" type="application/schema+json" href="/Note/index.json">
+<script type="application/schema+json">
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Note/index.json",
+  "title": "Note",
+  "description": "A short text post — the fediverse-canonical Note.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Note",
+    "termRegistry": "https://urn-solid.github.io/Note/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "type": "string",
+      "enum": ["Note", "urn:solid:Note"]
+    },
+    "content": {
+      "description": "The note text. May contain HTML in fediverse usage.",
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "description": "Optional short summary or content warning.",
+      "type": "string"
+    },
+    "published": {
+      "description": "ISO-8601 datetime the note was published.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated": {
+      "description": "ISO-8601 datetime of the most recent edit.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "attributedTo": {
+      "description": "The author — Person or Actor reference.",
+      "anyOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "https://solid-schema.github.io/Person/index.json" }
+      ]
+    },
+    "inReplyTo": {
+      "description": "Optional reference to the Note this is a reply to.",
+      "type": "string",
+      "format": "uri"
+    },
+    "to": {
+      "description": "Audience the note is addressed to (often urn:solid:Public for public posts).",
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ]
+    }
+  },
+  "required": ["@type", "content"],
+  "additionalProperties": true
+}
+
+</script>
+<style>
+body { font-family: Georgia, serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; color: #2c2c2c; background: #fafaf8; }
+header a { color: #888; text-decoration: none; margin-right: 1.2rem; }
+h1 { margin-bottom: 0.25rem; }
+.subtitle { color: #888; margin-top: 0; }
+.urn { font-family: monospace; background: #f0efeb; padding: 0.1em 0.4em; border-radius: 3px; }
+pre { background: #f0efeb; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+</style>
+</head>
+<body>
+<header>
+  <a href="/">solid-schema</a>
+  <a href="/index.json">index</a>
+  <a href="/reverse-index.json">reverse</a>
+  <a href="/corpus.jsonl">corpus</a>
+</header>
+<main>
+  <h1>Note</h1>
+  <p class="subtitle">A short text post — the fediverse-canonical Note.</p>
+  <p>Term: <a class="urn" href="https://urn-solid.github.io/Note/">urn:solid:Note</a></p>
+  <h2>Schema</h2>
+  <pre><code>{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Note/index.json",
+  "title": "Note",
+  "description": "A short text post — the fediverse-canonical Note.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Note",
+    "termRegistry": "https://urn-solid.github.io/Note/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "type": "string",
+      "enum": ["Note", "urn:solid:Note"]
+    },
+    "content": {
+      "description": "The note text. May contain HTML in fediverse usage.",
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "description": "Optional short summary or content warning.",
+      "type": "string"
+    },
+    "published": {
+      "description": "ISO-8601 datetime the note was published.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated": {
+      "description": "ISO-8601 datetime of the most recent edit.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "attributedTo": {
+      "description": "The author — Person or Actor reference.",
+      "anyOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "https://solid-schema.github.io/Person/index.json" }
+      ]
+    },
+    "inReplyTo": {
+      "description": "Optional reference to the Note this is a reply to.",
+      "type": "string",
+      "format": "uri"
+    },
+    "to": {
+      "description": "Audience the note is addressed to (often urn:solid:Public for public posts).",
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ]
+    }
+  },
+  "required": ["@type", "content"],
+  "additionalProperties": true
+}
+</code></pre>
+</main>
+</body>
+</html>

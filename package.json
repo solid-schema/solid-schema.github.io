@@ -1,0 +1,20 @@
+{
+  "name": "@solid-schema/registry",
+  "version": "0.0.1",
+  "description": "JSON Schemas for urn:solid types — drives validation, form generation, codegen, and pane rendering across the LION/LOSOS stack.",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.js",
+    "build": "node scripts/build.js"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.0",
+    "ajv-formats": "^3.0.1"
+  },
+  "license": "AGPL-3.0",
+  "homepage": "https://solid-schema.github.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/solid-schema/solid-schema.github.io.git"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "Note": {
+    "title": "Note",
+    "description": "A short text post — the fediverse-canonical Note.",
+    "term": "urn:solid:Note",
+    "status": "stable",
+    "schema": "/Note/index.json"
+  },
+  "Person": {
+    "title": "Person",
+    "description": "A human person — schema for data typed as urn:solid:Person.",
+    "term": "urn:solid:Person",
+    "status": "stable",
+    "schema": "/Person/index.json"
+  }
+}

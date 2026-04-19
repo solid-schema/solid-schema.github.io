@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Person — solid-schema</title>
+<meta name="description" content="A human person — schema for data typed as urn:solid:Person.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="/Person/">
+<link rel="alternate" type="application/schema+json" href="/Person/index.json">
+<script type="application/schema+json">
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Person/index.json",
+  "title": "Person",
+  "description": "A human person — schema for data typed as urn:solid:Person.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Person",
+    "termRegistry": "https://urn-solid.github.io/Person/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "description": "The Person's identifier (typically a WebID or DID).",
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "description": "The type marker. Bare 'Person' or the explicit urn:solid:Person form.",
+      "type": "string",
+      "enum": ["Person", "urn:solid:Person"]
+    },
+    "name": {
+      "description": "The Person's full display name.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "nick": {
+      "description": "A short nickname or handle.",
+      "type": "string",
+      "maxLength": 50
+    },
+    "email": {
+      "description": "An email address.",
+      "type": "string",
+      "format": "email"
+    },
+    "homepage": {
+      "description": "URL of the Person's primary website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "img": {
+      "description": "URL of an image of the Person.",
+      "type": "string",
+      "format": "uri"
+    },
+    "knows": {
+      "description": "Other People this Person knows. Each entry is a Person reference (typically just an @id).",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          { "type": "string", "format": "uri" },
+          { "$ref": "https://solid-schema.github.io/Person/index.json" }
+        ]
+      }
+    }
+  },
+  "required": ["@type"],
+  "additionalProperties": true
+}
+
+</script>
+<style>
+body { font-family: Georgia, serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; color: #2c2c2c; background: #fafaf8; }
+header a { color: #888; text-decoration: none; margin-right: 1.2rem; }
+h1 { margin-bottom: 0.25rem; }
+.subtitle { color: #888; margin-top: 0; }
+.urn { font-family: monospace; background: #f0efeb; padding: 0.1em 0.4em; border-radius: 3px; }
+pre { background: #f0efeb; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+</style>
+</head>
+<body>
+<header>
+  <a href="/">solid-schema</a>
+  <a href="/index.json">index</a>
+  <a href="/reverse-index.json">reverse</a>
+  <a href="/corpus.jsonl">corpus</a>
+</header>
+<main>
+  <h1>Person</h1>
+  <p class="subtitle">A human person — schema for data typed as urn:solid:Person.</p>
+  <p>Term: <a class="urn" href="https://urn-solid.github.io/Person/">urn:solid:Person</a></p>
+  <h2>Schema</h2>
+  <pre><code>{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Person/index.json",
+  "title": "Person",
+  "description": "A human person — schema for data typed as urn:solid:Person.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Person",
+    "termRegistry": "https://urn-solid.github.io/Person/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "description": "The Person's identifier (typically a WebID or DID).",
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "description": "The type marker. Bare 'Person' or the explicit urn:solid:Person form.",
+      "type": "string",
+      "enum": ["Person", "urn:solid:Person"]
+    },
+    "name": {
+      "description": "The Person's full display name.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "nick": {
+      "description": "A short nickname or handle.",
+      "type": "string",
+      "maxLength": 50
+    },
+    "email": {
+      "description": "An email address.",
+      "type": "string",
+      "format": "email"
+    },
+    "homepage": {
+      "description": "URL of the Person's primary website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "img": {
+      "description": "URL of an image of the Person.",
+      "type": "string",
+      "format": "uri"
+    },
+    "knows": {
+      "description": "Other People this Person knows. Each entry is a Person reference (typically just an @id).",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          { "type": "string", "format": "uri" },
+          { "$ref": "https://solid-schema.github.io/Person/index.json" }
+        ]
+      }
+    }
+  },
+  "required": ["@type"],
+  "additionalProperties": true
+}
+</code></pre>
+</main>
+</body>
+</html>
