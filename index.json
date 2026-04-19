@@ -1,4 +1,11 @@
 {
+  "AddressBook": {
+    "title": "AddressBook",
+    "description": "A collection of contacts — a personal or shared address book.",
+    "term": "urn:solid:AddressBook",
+    "status": "stable",
+    "schema": "/AddressBook/index.json"
+  },
   "Article": {
     "title": "Article",
     "description": "A long-form authored piece — a blog post, news article, or essay. More structured than Note.",

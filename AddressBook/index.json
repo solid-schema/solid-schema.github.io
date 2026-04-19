@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/AddressBook/index.json",
+  "title": "AddressBook",
+  "description": "A collection of contacts — a personal or shared address book.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:AddressBook",
+    "termRegistry": "https://urn-solid.github.io/AddressBook/",
+    "status": "stable",
+    "added": "2026-04-19",
+    "curatedBy": "claude-curate-next"
+  },
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "type": "string",
+      "enum": ["AddressBook", "urn:solid:AddressBook"]
+    },
+    "title": {
+      "description": "Display name of the address book.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "description": {
+      "description": "Free-text notes about this address book.",
+      "type": "string",
+      "maxLength": 2000
+    },
+    "hasMember": {
+      "description": "The contacts in this address book — typically Person references.",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          { "type": "string", "format": "uri" },
+          { "$ref": "https://solid-schema.github.io/Person/index.json" }
+        ]
+      }
+    },
+    "created": {
+      "description": "ISO-8601 datetime the address book was created.",
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["@type", "title"],
+  "additionalProperties": true
+}
