@@ -120,4 +120,6 @@ The body is standard JSON Schema. The `x-urn-solid` extension uses JSON Schema's
 
 - `urn-solid` — vocabulary registry. Use to find the term identifier this schema describes.
 - `solid-panes` — pane registry that points apps at the right schema + UI for each type.
-- `losos` — the runtime. See https://losos.org/SKILL.md.
+- `solid-apps` — catalog of working apps composing the stack. https://solid-apps.github.io/SKILL.md
+- `losos` — the runtime. https://losos.org/SKILL.md
+- `xlogin` — auth (Nostr + Solid). https://github.com/melvincarvalho/xlogin/blob/gh-pages/SKILL.md
