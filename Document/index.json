@@ -6,7 +6,7 @@
   "type": "object",
   "x-urn-solid": {
     "term": "urn:solid:Document",
-    "termRegistry": "https://urn-solid.github.io/Document/",
+    "termRegistry": "https://urn-solid.com/Document/",
     "status": "stable",
     "added": "2026-04-19",
     "curatedBy": "claude-curate-next"

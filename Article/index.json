@@ -6,7 +6,7 @@
   "type": "object",
   "x-urn-solid": {
     "term": "urn:solid:Article",
-    "termRegistry": "https://urn-solid.github.io/Article/",
+    "termRegistry": "https://urn-solid.com/Article/",
     "status": "stable",
     "added": "2026-04-19",
     "curatedBy": "claude-curate-next"
