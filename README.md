@@ -1,6 +1,6 @@
 # solid-schema
 
-JSON Schemas for [urn:solid](https://urn-solid.github.io/) types.
+JSON Schemas for [urn:solid](https://urn-solid.com/) types.
 
 One JSON Schema per type, published at a stable URL. Drives validation, form generation, type-safe codegen, and pane rendering across the LION + LOSOS stack.
 
@@ -47,7 +47,7 @@ corpus.jsonl         Generated: every schema, one per line
   "type": "object",
   "x-urn-solid": {
     "term": "urn:solid:Person",
-    "termRegistry": "https://urn-solid.github.io/Person/",
+    "termRegistry": "https://urn-solid.com/Person/",
     "status": "stable",
     "added": "2026-04-19"
   },

@@ -53,7 +53,7 @@ Reverse: `https://solid-schema.github.io/reverse-index.json` (`urn:solid:Type` â
   "type": "object",
   "x-urn-solid": {
     "term": "urn:solid:Person",
-    "termRegistry": "https://urn-solid.github.io/Person/",
+    "termRegistry": "https://urn-solid.com/Person/",
     "status": "stable",
     "added": "2026-04-19"
   },
@@ -77,7 +77,7 @@ The body is standard JSON Schema. The `x-urn-solid` extension uses JSON Schema's
 
 ## Adding a new schema
 
-1. **Make sure the term exists in urn-solid** (or propose it first at https://github.com/urn-solid/urn-solid.github.io/issues).
+1. **Make sure the term exists in urn-solid** (or propose it first at https://github.com/urn-solid/urn-solid.com/issues).
 2. Create `<Name>/index.json` matching the anatomy above. Required fields: `$schema`, `$id`, `title`, `type`, `x-urn-solid` (with `term`, `status`, `added`).
 3. Constrain conservatively. `additionalProperties: true` is the default â€” be permissive at the edges; require only the truly load-bearing fields.
 4. `npm run validate` checks both the meta-schema constraints and that each file is itself a valid JSON Schema 2020-12. Cross-references between schemas (e.g. `Note` referencing `Person` via `$ref`) resolve.
