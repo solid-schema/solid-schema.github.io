@@ -6,6 +6,13 @@
     "status": "stable",
     "schema": "/AddressBook/index.json"
   },
+  "Alarm": {
+    "title": "Alarm",
+    "description": "A clock alarm — a recurring wake or reminder trigger at a wall-clock time. In practice a daily-recurring iCalendar Vevent carrying an embedded VALARM. RFC 5545 compatible.",
+    "term": "urn:solid:Alarm",
+    "status": "experimental",
+    "schema": "/Alarm/index.json"
+  },
   "Article": {
     "title": "Article",
     "description": "A long-form authored piece — a blog post, news article, or essay. More structured than Note.",
