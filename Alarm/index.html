@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Alarm — solid-schema</title>
+<meta name="description" content="A clock alarm — a recurring wake or reminder trigger at a wall-clock time. In practice a daily-recurring iCalendar Vevent carrying an embedded VALARM. RFC 5545 compatible.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="/Alarm/">
+<link rel="alternate" type="application/schema+json" href="/Alarm/index.json">
+<script type="application/schema+json">
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Alarm/index.json",
+  "title": "Alarm",
+  "description": "A clock alarm — a recurring wake or reminder trigger at a wall-clock time. In practice a daily-recurring iCalendar Vevent carrying an embedded VALARM. RFC 5545 compatible.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Alarm",
+    "termRegistry": "https://urn-solid.com/Alarm/",
+    "status": "experimental",
+    "added": "2026-07-21",
+    "curatedBy": "solid-apps/alarm"
+  },
+  "properties": {
+    "@id": {
+      "type": "string"
+    },
+    "@type": {
+      "oneOf": [
+        { "type": "string", "enum": ["Alarm", "urn:solid:Alarm"] },
+        { "type": "array", "items": { "type": "string" }, "contains": { "enum": ["Alarm", "urn:solid:Alarm"] } }
+      ]
+    },
+    "summary": {
+      "description": "The alarm's label (e.g. \"Wake up\"). Optional — an alarm needs no name.",
+      "type": "string",
+      "maxLength": 200
+    },
+    "dtstart": {
+      "description": "First occurrence as RFC 5545 floating time — deliberately zoneless (not RFC 3339): the alarm fires at this wall-clock time in whatever timezone the device is in.",
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(:[0-9]{2})?$"
+    },
+    "rrule": {
+      "description": "Recurrence rule (RFC 5545 RECUR). FREQ=DAILY for an everyday alarm; add BYDAY (e.g. FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR) for weekday schedules.",
+      "type": "string",
+      "pattern": "^FREQ="
+    },
+    "status": {
+      "description": "CONFIRMED = enabled, CANCELLED = disabled. Calendars that hide CANCELLED events render a disabled alarm correctly.",
+      "type": "string",
+      "enum": ["CONFIRMED", "CANCELLED"]
+    },
+    "created": {
+      "description": "When the alarm was created (ISO 8601).",
+      "type": "string",
+      "format": "date-time"
+    },
+    "valarm": {
+      "description": "Embedded iCalendar VALARM — the RFC 5545 alarm subcomponent that marks this event as one that rings.",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "enum": ["Valarm"]
+        },
+        "action": {
+          "description": "How the alarm fires (RFC 5545 §3.8.6.1).",
+          "type": "string",
+          "enum": ["AUDIO", "DISPLAY", "EMAIL"]
+        },
+        "trigger": {
+          "description": "When the alarm fires relative to dtstart (xsd:duration, e.g. PT0S for at-time).",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["@type", "dtstart"],
+  "additionalProperties": true
+}
+
+</script>
+<style>
+body { font-family: Georgia, serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; color: #2c2c2c; background: #fafaf8; }
+header a { color: #888; text-decoration: none; margin-right: 1.2rem; }
+h1 { margin-bottom: 0.25rem; }
+.subtitle { color: #888; margin-top: 0; }
+.urn { font-family: monospace; background: #f0efeb; padding: 0.1em 0.4em; border-radius: 3px; }
+pre { background: #f0efeb; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+</style>
+</head>
+<body>
+<header>
+  <a href="/">solid-schema</a>
+  <a href="/index.json">index</a>
+  <a href="/reverse-index.json">reverse</a>
+  <a href="/corpus.jsonl">corpus</a>
+</header>
+<main>
+  <h1>Alarm</h1>
+  <p class="subtitle">A clock alarm — a recurring wake or reminder trigger at a wall-clock time. In practice a daily-recurring iCalendar Vevent carrying an embedded VALARM. RFC 5545 compatible.</p>
+  <p>Term: <a class="urn" href="https://urn-solid.com/Alarm/">urn:solid:Alarm</a></p>
+  <h2>Schema</h2>
+  <pre><code>{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Alarm/index.json",
+  "title": "Alarm",
+  "description": "A clock alarm — a recurring wake or reminder trigger at a wall-clock time. In practice a daily-recurring iCalendar Vevent carrying an embedded VALARM. RFC 5545 compatible.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Alarm",
+    "termRegistry": "https://urn-solid.com/Alarm/",
+    "status": "experimental",
+    "added": "2026-07-21",
+    "curatedBy": "solid-apps/alarm"
+  },
+  "properties": {
+    "@id": {
+      "type": "string"
+    },
+    "@type": {
+      "oneOf": [
+        { "type": "string", "enum": ["Alarm", "urn:solid:Alarm"] },
+        { "type": "array", "items": { "type": "string" }, "contains": { "enum": ["Alarm", "urn:solid:Alarm"] } }
+      ]
+    },
+    "summary": {
+      "description": "The alarm's label (e.g. \"Wake up\"). Optional — an alarm needs no name.",
+      "type": "string",
+      "maxLength": 200
+    },
+    "dtstart": {
+      "description": "First occurrence as RFC 5545 floating time — deliberately zoneless (not RFC 3339): the alarm fires at this wall-clock time in whatever timezone the device is in.",
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(:[0-9]{2})?$"
+    },
+    "rrule": {
+      "description": "Recurrence rule (RFC 5545 RECUR). FREQ=DAILY for an everyday alarm; add BYDAY (e.g. FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR) for weekday schedules.",
+      "type": "string",
+      "pattern": "^FREQ="
+    },
+    "status": {
+      "description": "CONFIRMED = enabled, CANCELLED = disabled. Calendars that hide CANCELLED events render a disabled alarm correctly.",
+      "type": "string",
+      "enum": ["CONFIRMED", "CANCELLED"]
+    },
+    "created": {
+      "description": "When the alarm was created (ISO 8601).",
+      "type": "string",
+      "format": "date-time"
+    },
+    "valarm": {
+      "description": "Embedded iCalendar VALARM — the RFC 5545 alarm subcomponent that marks this event as one that rings.",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "enum": ["Valarm"]
+        },
+        "action": {
+          "description": "How the alarm fires (RFC 5545 §3.8.6.1).",
+          "type": "string",
+          "enum": ["AUDIO", "DISPLAY", "EMAIL"]
+        },
+        "trigger": {
+          "description": "When the alarm fires relative to dtstart (xsd:duration, e.g. PT0S for at-time).",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["@type", "dtstart"],
+  "additionalProperties": true
+}
+</code></pre>
+</main>
+</body>
+</html>

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solid-schema.github.io/Alarm/index.json",
+  "title": "Alarm",
+  "description": "A clock alarm — a recurring wake or reminder trigger at a wall-clock time. In practice a daily-recurring iCalendar Vevent carrying an embedded VALARM. RFC 5545 compatible.",
+  "type": "object",
+  "x-urn-solid": {
+    "term": "urn:solid:Alarm",
+    "termRegistry": "https://urn-solid.com/Alarm/",
+    "status": "experimental",
+    "added": "2026-07-21",
+    "curatedBy": "solid-apps/alarm"
+  },
+  "properties": {
+    "@id": {
+      "type": "string"
+    },
+    "@type": {
+      "oneOf": [
+        { "type": "string", "enum": ["Alarm", "urn:solid:Alarm"] },
+        { "type": "array", "items": { "type": "string" }, "contains": { "enum": ["Alarm", "urn:solid:Alarm"] } }
+      ]
+    },
+    "summary": {
+      "description": "The alarm's label (e.g. \"Wake up\"). Optional — an alarm needs no name.",
+      "type": "string",
+      "maxLength": 200
+    },
+    "dtstart": {
+      "description": "First occurrence as RFC 5545 floating time — deliberately zoneless (not RFC 3339): the alarm fires at this wall-clock time in whatever timezone the device is in.",
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(:[0-9]{2})?$"
+    },
+    "rrule": {
+      "description": "Recurrence rule (RFC 5545 RECUR). FREQ=DAILY for an everyday alarm; add BYDAY (e.g. FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR) for weekday schedules.",
+      "type": "string",
+      "pattern": "^FREQ="
+    },
+    "status": {
+      "description": "CONFIRMED = enabled, CANCELLED = disabled. Calendars that hide CANCELLED events render a disabled alarm correctly.",
+      "type": "string",
+      "enum": ["CONFIRMED", "CANCELLED"]
+    },
+    "created": {
+      "description": "When the alarm was created (ISO 8601).",
+      "type": "string",
+      "format": "date-time"
+    },
+    "valarm": {
+      "description": "Embedded iCalendar VALARM — the RFC 5545 alarm subcomponent that marks this event as one that rings.",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "enum": ["Valarm"]
+        },
+        "action": {
+          "description": "How the alarm fires (RFC 5545 §3.8.6.1).",
+          "type": "string",
+          "enum": ["AUDIO", "DISPLAY", "EMAIL"]
+        },
+        "trigger": {
+          "description": "When the alarm fires relative to dtstart (xsd:duration, e.g. PT0S for at-time).",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["@type", "dtstart"],
+  "additionalProperties": true
+}
